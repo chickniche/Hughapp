@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Quest Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>🎒 School Quest Tracker</h1>
+      <p>
+        Keep track of class assignments, field trips, and practice tools—then earn points for staying consistent!
+      </p>
+      <div class="scoreboard">
+        <div class="badge">
+          <span>Total Points</span>
+          <strong id="pointsTotal">0</strong>
+        </div>
+        <div class="badge">
+          <span>Current Streak</span>
+          <strong id="streakTotal">0 days</strong>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Add a School Task</h2>
+        <form id="taskForm" class="grid-form">
+          <label>
+            Subject / Type
+            <select id="subject" required>
+              <option value="">Choose one...</option>
+              <option>Math</option>
+              <option>English</option>
+              <option>Humanities</option>
+              <option>Sciences</option>
+              <option>Flex</option>
+              <option>Field Trip</option>
+              <option>Special Project</option>
+            </select>
+          </label>
+
+          <label>
+            Assignment
+            <input id="title" type="text" placeholder="Ex: Fractions worksheet" required />
+          </label>
+
+          <label>
+            Due date
+            <input id="dueDate" type="date" required />
+          </label>
+
+          <label>
+            Progress
+            <select id="progress" required>
+              <option value="Not Started">Not Started</option>
+              <option value="Started">Started</option>
+              <option value="Halfway">Halfway</option>
+              <option value="Almost Done">Almost Done</option>
+              <option value="Done">Done</option>
+            </select>
+          </label>
+
+          <button type="submit" class="primary">Add Quest (+5 points)</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Current Quests</h2>
+        <div id="taskList" class="task-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Practice at Home</h2>
+        <ul id="practiceList" class="practice-list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Rewards Shop</h2>
+        <p class="hint">Parents can decide how to honor each reward.</p>
+        <form id="rewardForm" class="reward-form">
+          <input id="rewardName" type="text" placeholder="Reward name (ex: 20 min game time)" required />
+          <input id="rewardCost" type="number" min="1" placeholder="Point cost" required />
+          <button type="submit">Add Reward</button>
+        </form>
+        <div id="rewardList" class="reward-list"></div>
+      </section>
+    </main>
+
+    <template id="taskTemplate">
+      <article class="task-card">
+        <div>
+          <h3 class="task-title"></h3>
+          <p class="meta"></p>
+          <small class="due"></small>
+        </div>
+        <div class="task-actions">
+          <select class="task-progress">
+            <option value="Not Started">Not Started</option>
+            <option value="Started">Started</option>
+            <option value="Halfway">Halfway</option>
+            <option value="Almost Done">Almost Done</option>
+            <option value="Done">Done ✅</option>
+          </select>
+          <button class="delete">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
